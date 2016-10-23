@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+		     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+		     xmlns:local="clr-namespace:FormsSample;assembly=FormsSample"
+		     x:Class="FormsSample.Pages.ShareListItemPage"
+			 Title="Share Shopping List">
+	
+   <StackLayout BackgroundColor="#fff2cc" Spacing="10" Padding="10">
+   			<Label Text="Share Shopping List"
+			       FontSize="25"
+				   FontAttributes="Italic"
+				   BackgroundColor="Blue"
+			       TextColor="White"
+				   WidthRequest="100"
+			       YAlign="Center"
+				   XAlign="Center"/>
+		    <Image x:Name="ItemImage" 
+				   Source="email.png"
+			       HeightRequest="100" />
+		    <Label Text="* Required Fields" FontSize="10"/>
+			<StackLayout Orientation="Horizontal">
+				<Label Text="Email recipient*"/>
+				<Entry x:Name="emailRecipient"
+					   Text=""
+					   Keyboard="Email"
+					   HorizontalOptions="FillAndExpand"
+					   Placeholder="youremail@mail.com"/>
+				
+			</StackLayout>
+			<Label Text="Press button to email shopping list items" FontSize="10"/>
+			<Button Text="Send Email"
+			        BackgroundColor="#A6E55E"
+			        TextColor="Black"
+					FontSize="20"
+			        Clicked="OnSendEmailButtonClicked">
+				<Button.Triggers>
+					<DataTrigger TargetType="Button"
+						         Binding="{Binding Source={x:Reference emailRecipient},
+											Path=Text.Length}"
+						         Value="0">
+						<Setter Property="IsEnabled" Value="False" />
+					</DataTrigger>
+				</Button.Triggers>
+			</Button>
+		</StackLayout>
+
+</ContentPage>

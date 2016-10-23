@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+		     x:Class="FormsSample.Pages.ShopListItemPage"
+		     xmlns:local="clr-namespace:FormsSample;assembly=FormsSample"
+			 Title="{Binding Title}">
+	<ContentPage.Resources>
+        <ResourceDictionary>
+			 	
+	         <Style TargetType="Entry">
+	              <Style.Triggers>
+	                <Trigger TargetType="Entry"
+	                         Property="IsFocused" Value="True">
+	                    <Setter Property="BackgroundColor" Value="Yellow" />
+	                </Trigger>
+					
+	            </Style.Triggers>
+	        </Style>
+		
+        </ResourceDictionary>
+    </ContentPage.Resources>
+   <StackLayout BackgroundColor="#fff2cc" Spacing="10" Padding="10">
+   			<Label Text="Item Details"
+			       FontSize="25"
+				   FontAttributes="Italic"
+				   BackgroundColor="Blue"
+			       TextColor="White"
+				   WidthRequest="100"
+			       YAlign="Center"
+				   XAlign="Center"/>
+		    <Label Text="* Required Fields" FontSize="10"></Label>
+			<StackLayout Orientation="Horizontal">
+				<Label Text="Item Name*"/>
+				<Entry Text="{Binding ListItemName}"
+					   HorizontalOptions="FillAndExpand"
+					   Placeholder="Bread">
+					<Entry.Triggers>
+		                <Trigger TargetType="Entry"
+	                 			 Property="Entry.IsFocused" Value="True">
+	            			<Trigger.ExitActions>
+	                			<local:StringValidationTriggerAction />
+	           				</Trigger.ExitActions>
+	           			</Trigger>
+	            	</Entry.Triggers>
+			    </Entry> 
+			</StackLayout>
+			<StackLayout Orientation="Horizontal">
+				<Label Text="Item Brand*"/>
+				<Entry Text="{Binding ItemBrand}"
+					   HorizontalOptions="FillAndExpand"
+					   Placeholder="Tip Top">
+					<Entry.Triggers>
+		                <Trigger TargetType="Entry"
+	                 			 Property="Entry.IsFocused" Value="True">
+	            			<Trigger.ExitActions>
+	                			<local:StringValidationTriggerAction />
+	           				</Trigger.ExitActions>
+	           			</Trigger>
+	            	</Entry.Triggers>
+				</Entry>
+			</StackLayout>
+		
+		    <StackLayout Orientation="Horizontal">
+				<Label Text="Cost"></Label>
+				<Entry Text="{Binding ItemCost}"
+					   HorizontalOptions="FillAndExpand"
+					   Placeholder="2.50">
+					<Entry.Triggers>
+		                <Trigger TargetType="Entry"
+	                 			 Property="Entry.IsFocused" Value="True">
+	            			<Trigger.ExitActions>
+	                			<local:NumericValidationTriggerAction />
+	           				</Trigger.ExitActions>
+	           			</Trigger>
+	            	</Entry.Triggers>
+				</Entry>
+			
+				<Label Text="Have Item"
+					   HorizontalOptions="EndAndExpand"/>
+				<Switch IsToggled="{Binding HaveItem}"
+						HorizontalOptions="End"/>
+			</StackLayout>
+
+			<Label Text="* Press Button to take photo of shopping list item" FontSize="10"></Label>
+			<Button x:Name="TakePictureButton"
+					BackgroundColor="#A6E55E"
+				    TextColor="Black"
+				    FontSize="20"
+					Clicked="TakePhotoButtonClicked"
+					Text="Take Item Photo"/>
+		
+			<Image x:Name="ItemImage" 
+				   Source="item-image.png"
+			       HeightRequest="100" />
+	    
+			<Button Text="Add Item to List"
+			        BackgroundColor="#A6E55E"
+			        TextColor="Black"
+					FontSize="20"
+			        Command="{Binding SaveItemCommand}"/>
+		
+		</StackLayout>
+</ContentPage>
+
+

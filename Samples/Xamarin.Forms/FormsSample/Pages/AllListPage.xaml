@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+		     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+		     x:Class="FormsSample.Pages.AllListPage"
+             Title="{Binding Title}">
+	
+	<ContentPage.Content>
+		<StackLayout >
+			<Label Text="My Shopping List"
+			       FontSize="20"
+				   FontAttributes="Italic"
+				   BackgroundColor="Blue"
+			       TextColor="White"
+				   WidthRequest="100"
+			       YAlign="Center"
+				   XAlign="Center"/>
+			<StackLayout Orientation="Horizontal">
+			<Label Text="Item"
+				   HorizontalOptions="StartAndExpand"
+				   FontSize="22"
+				   FontAttributes="Bold"
+				   Margin="10, 0"	/>
+			<Label Text="Have Item"
+				   HorizontalOptions="End"
+				   FontSize="22"
+				   FontAttributes="Bold"
+				   Margin="10, 0"/>	
+			</StackLayout>
+			<ListView 
+					BackgroundColor="#fff2cc" 
+					RowHeight="50" 
+					CachingStrategy="RecycleElement" 
+					ItemsSource="{Binding Items}" 
+					SelectedItem="{Binding SelectedListItem, Mode=TwoWay}"
+					IsPullToRefreshEnabled="True"
+					IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+					RefreshCommand="{Binding RefreshCommand}">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+                        	<StackLayout Padding="10" Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+                            	<Label Text="{Binding ListItemName}" TextColor="#272832" HorizontalOptions="FillAndExpand"/>
+								<Switch IsToggled="{Binding HaveItem}"/>
+                        	</StackLayout>
+                    	</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+			<Button Text="Share List"
+				    BackgroundColor="#A6E55E"
+				    TextColor="Black"
+					FontSize="20"
+				    Command="{Binding ShareListCommand}"
+				    Margin="10, 0"/>
+			<Button Text="Add New"
+				    BackgroundColor="#A6E55E"
+				    TextColor="Black"
+					FontSize="20"
+				    Command="{Binding AddNewItemCommand}"
+				    Margin="10"/>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

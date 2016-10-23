@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+		     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+		     xmlns:local="clr-namespace:FormsSample;assembly=FormsSample"
+		     x:Class="FormsSample.Pages.AboutPage"
+		     Title="About My Shopping List">
+
+   <StackLayout BackgroundColor="#fff2cc" Spacing="10" Padding="10">
+   			<Label Text="About My Shopping List"
+			       FontSize="18"
+				   FontAttributes="Italic"
+				   BackgroundColor="Blue"
+			       TextColor="White"
+				   WidthRequest="100"
+			       YAlign="Center"
+				   XAlign="Center"/>
+		    <Image x:Name="ItemImage" 
+				   Source="Question.jpg"
+			       HeightRequest="75" />
+		    
+			
+			<Label Text="This app has the following functions"
+			       FontSize="20"
+			       FontAttributes="Bold"/>
+	       <Label Text="1. Add and delete items to a shopping list"/>
+		   <Label Text="2. Mark off Items as they are purchased"/>
+	       <Label Text="3. Classify Items by brand and cost"/>
+		   <Label Text="4. Classify Items with a photo"/>
+		   <Label Text="4. Share List via email"/>
+		   <Label Text="Developed by JayCorp Enterprises © 2016"
+			      HorizontalTextAlignment="Center"
+			      FontSize="12"
+			      FontAttributes="Italic"
+			      Margin="15"/>
+		</StackLayout>
+
+</ContentPage>
+

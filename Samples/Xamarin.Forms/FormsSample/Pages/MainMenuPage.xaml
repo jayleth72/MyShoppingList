@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+		     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+		     x:Class="FormsSample.Pages.MainMenuPage"
+		     Title="My Shopping List">
+	<ContentPage.Content>
+		<StackLayout BackgroundColor="#fff2cc" Spacing="20" Padding="10">
+
+			<Label Text="Main Menu"
+			       FontSize="25"
+				   FontAttributes="Italic"
+				   BackgroundColor="Blue"
+			       TextColor="White"
+				   WidthRequest="100"
+			       YAlign="Center"
+				   XAlign="Center"/>
+
+			<Image x:Name="ItemImage" 
+				   Source="shop-it.jpg"
+			       HeightRequest="250" />
+			
+			<Button Text="My Shopping List"
+				    BackgroundColor="#A6E55E"
+				    TextColor="Black"
+					FontSize="20"
+				    Clicked="OnAllListsButtonClicked"/>
+		
+			<Button Text="About Shopping List"
+				    BackgroundColor="#A6E55E"
+				    TextColor="Black"
+					FontSize="20"
+				    Clicked="AboutButtonClicked"/>
+			
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>
+

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+		     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+		     x:Class="FormsSample.Pages.UpdateListItemPage"
+		     xmlns:local="clr-namespace:FormsSample;assembly=FormsSample"
+			 Title="{Binding Title}">
+	<ContentPage.Resources>
+        <ResourceDictionary>
+			 	
+	         <Style TargetType="Entry">
+	              <Style.Triggers>
+	                <Trigger TargetType="Entry"
+	                         Property="IsFocused" Value="True">
+	                    <Setter Property="BackgroundColor" Value="Yellow" />
+	                </Trigger>
+					
+	            </Style.Triggers>
+	        </Style>
+		
+        </ResourceDictionary>
+    </ContentPage.Resources>
+   <StackLayout Spacing="10" Padding="10">
+		<ScrollView>
+		    <Label Text="* Required Fields" FontSize="10"></Label>
+			<Label Text="Shopping Item Name*"></Label>
+			<Entry Text="{Binding ListItemName}">
+				<Entry.Triggers>
+	                <Trigger TargetType="Entry"
+                 			 Property="Entry.IsFocused" Value="True">
+            			<Trigger.ExitActions>
+                			<local:StringValidationTriggerAction />
+           				</Trigger.ExitActions>
+           			</Trigger>
+            	</Entry.Triggers>
+		    </Entry>  
+			<Label Text="Shopping Item Brand*"></Label>
+			<Entry Text="{Binding ItemBrand}">
+				<Entry.Triggers>
+	                <Trigger TargetType="Entry"
+                 			 Property="Entry.IsFocused" Value="True">
+            			<Trigger.ExitActions>
+                			<local:StringValidationTriggerAction />
+           				</Trigger.ExitActions>
+           			</Trigger>
+            	</Entry.Triggers>
+			</Entry>
+			<Label Text="Shopping Item Cost"></Label>
+			<Entry Text="{Binding ItemCost}">
+				<Entry.Triggers>
+	                <Trigger TargetType="Entry"
+                 			 Property="Entry.IsFocused" Value="True">
+            			<Trigger.ExitActions>
+                			<local:NumericValidationTriggerAction />
+           				</Trigger.ExitActions>
+           			</Trigger>
+            	</Entry.Triggers>
+			</Entry>
+			<Label Text="Have Item"></Label>
+			<Switch IsToggled="{Binding HaveItem}"></Switch>
+
+		    <StackLayout Orientation="Vertical" VerticalOptions="End">
+				<Button Text="Save Item"
+				        BackgroundColor="#A6E55E"
+				        TextColor="White"
+				        Command="{Binding SaveItemCommand}">
+				</Button>
+				<Button Text="Delete" BackgroundColor="#F1836E" TextColor="White" Command="{Binding DeleteItemCommand}"></Button>	 
+			</StackLayout>
+			<StackLayout VerticalOptions="CenterAndExpand">
+				<Button x:Name="TakePictureButton"
+					BackgroundColor="#A6E55E"
+				    TextColor="White"
+					Clicked="TakePhotoButtonClicked"
+					Text="Item Photo"/>
+			
+				<Image x:Name="ItemImage"  HeightRequest="100" />
+		    </StackLayout>
+			
+			</ScrollView>
+		</StackLayout>
+</ContentPage>
+
